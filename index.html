@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Structure XR1 — Framework Multi-Agents IA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --red: #E60000;
+            --bg: #0A0A0A;
+            --panel: #111;
+            --border: #1a1a1a;
+            --white: #fff;
+            --muted: #666;
+            --green: #00FF41;
+            --cyan: #00BFFF;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background: var(--bg); color: var(--white); font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        a { color: var(--red); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* Nav */
+        nav { position: fixed; top: 0; width: 100%; z-index: 100; padding: 20px 48px; display: flex; justify-content: space-between; align-items: center; background: rgba(10,10,10,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+        .logo { font-size: 14px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; }
+        .logo span { color: var(--red); }
+        .nav-links a { color: var(--muted); font-size: 12px; letter-spacing: 1px; text-transform: uppercase; margin-left: 28px; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--white); text-decoration: none; }
+
+        /* Hero */
+        .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 120px 24px 80px; position: relative; }
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 50% 30%, rgba(230,0,0,0.08) 0%, transparent 60%); pointer-events: none; }
+        .hero-badge { display: inline-block; padding: 6px 16px; border: 1px solid var(--border); border-radius: 20px; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 32px; }
+        .hero-badge span { color: var(--green); }
+        h1 { font-size: clamp(48px, 8vw, 96px); font-weight: 800; line-height: 1; letter-spacing: -2px; margin-bottom: 24px; }
+        h1 span { color: var(--red); }
+        .hero-sub { font-size: clamp(16px, 2.5vw, 22px); color: var(--muted); max-width: 600px; line-height: 1.6; font-weight: 300; }
+        .hero-stats { display: flex; gap: 48px; margin-top: 56px; }
+        .hero-stat { text-align: center; }
+        .hero-stat .num { font-size: 36px; font-weight: 700; color: var(--white); }
+        .hero-stat .label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 2px; margin-top: 4px; }
+
+        /* Sections */
+        section { padding: 100px 48px; max-width: 1200px; margin: 0 auto; }
+        .section-label { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--red); margin-bottom: 16px; }
+        h2 { font-size: 40px; font-weight: 700; margin-bottom: 48px; letter-spacing: -1px; }
+
+        /* Features grid */
+        .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+        .feature { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 32px; transition: border-color 0.3s; }
+        .feature:hover { border-color: #333; }
+        .feature-icon { font-size: 28px; margin-bottom: 16px; }
+        .feature h3 { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+        .feature p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+        /* Providers */
+        .providers-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+        .provider-tag { padding: 8px 16px; border: 1px solid var(--border); border-radius: 6px; font-size: 12px; font-weight: 500; color: var(--muted); transition: all 0.2s; }
+        .provider-tag:hover { border-color: var(--green); color: var(--green); }
+        .provider-tag.active { border-color: var(--green); color: var(--green); }
+
+        /* Architecture */
+        .arch-diagram { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 40px; font-family: 'Courier New', monospace; font-size: 13px; line-height: 1.8; color: var(--muted); overflow-x: auto; }
+        .arch-diagram .hl { color: var(--green); }
+        .arch-diagram .rd { color: var(--red); }
+        .arch-diagram .cy { color: var(--cyan); }
+
+        /* Terminal */
+        .terminal { background: #0d0d0d; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-top: 48px; }
+        .terminal-header { display: flex; gap: 6px; padding: 12px 16px; background: #161616; border-bottom: 1px solid var(--border); }
+        .terminal-dot { width: 10px; height: 10px; border-radius: 50%; }
+        .terminal-body { padding: 24px; font-family: 'Courier New', monospace; font-size: 13px; line-height: 1.8; }
+        .terminal-body .prompt { color: var(--green); }
+        .terminal-body .comment { color: #555; }
+        .terminal-body .output { color: var(--muted); }
+
+        /* CTA */
+        .cta { text-align: center; padding: 100px 24px; }
+        .cta h2 { margin-bottom: 16px; }
+        .cta p { color: var(--muted); font-size: 16px; margin-bottom: 32px; }
+        .btn { display: inline-block; padding: 14px 36px; background: var(--red); color: var(--white); font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600; letter-spacing: 1px; border: none; border-radius: 8px; cursor: pointer; text-decoration: none; transition: opacity 0.2s; }
+        .btn:hover { opacity: 0.85; text-decoration: none; }
+        .btn-ghost { background: none; border: 1px solid var(--border); color: var(--white); margin-left: 12px; }
+        .btn-ghost:hover { border-color: #444; }
+
+        /* Footer */
+        footer { padding: 48px; border-top: 1px solid var(--border); text-align: center; font-size: 12px; color: var(--muted); }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav { padding: 16px 24px; }
+            .nav-links { display: none; }
+            section { padding: 60px 24px; }
+            .hero-stats { flex-direction: column; gap: 24px; }
+            h1 { letter-spacing: -1px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="logo">STRUCTURE <span>XR1</span></div>
+    <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#providers">Providers</a>
+        <a href="#architecture">Architecture</a>
+        <a href="https://github.com/structure-xr1">GitHub</a>
+    </div>
+</nav>
+
+<div class="hero">
+    <div class="hero-badge"><span>&#9679;</span> Framework actif &mdash; v2.3.0</div>
+    <h1>STRUCTURE <span>XR1</span></h1>
+    <p class="hero-sub">Framework autonome multi-agents IA. Orchestration intelligente de 16 providers, routage par quota, deploiement edge sur Raspberry Pi.</p>
+    <div class="hero-stats">
+        <div class="hero-stat"><div class="num">16</div><div class="label">Providers IA</div></div>
+        <div class="hero-stat"><div class="num">280K+</div><div class="label">RPD gratuits/jour</div></div>
+        <div class="hero-stat"><div class="num">10</div><div class="label">Task Types</div></div>
+        <div class="hero-stat"><div class="num">24/7</div><div class="label">Edge Deploy</div></div>
+    </div>
+</div>
+
+<section id="features">
+    <div class="section-label">Capacites</div>
+    <h2>Un framework, pas un wrapper</h2>
+    <div class="features">
+        <div class="feature">
+            <div class="feature-icon">&#9889;</div>
+            <h3>Routage intelligent</h3>
+            <p>Scoring multi-criteres : quota restant (40%), affinite taskType (25%), fiabilite (20%), cout (15%). Le meilleur provider est selectionne automatiquement.</p>
+        </div>
+        <div class="feature">
+            <div class="feature-icon">&#9881;</div>
+            <h3>10 types de taches</h3>
+            <p>Code, analyse, redaction, decision, bulk, search, chat, review, long-context, synthese. Chaque type a ses providers optimaux.</p>
+        </div>
+        <div class="feature">
+            <div class="feature-icon">&#128640;</div>
+            <h3>Zero downtime</h3>
+            <p>Fallback automatique : si un provider echoue, le suivant prend le relais. Tracking d'erreurs, providers instables auto-evites.</p>
+        </div>
+        <div class="feature">
+            <div class="feature-icon">&#127968;</div>
+            <h3>Edge-first</h3>
+            <p>Deploye sur Raspberry Pi (733 MB RAM). Dashboard HDMI temps reel, portail web, monitoring systeme integre.</p>
+        </div>
+        <div class="feature">
+            <div class="feature-icon">&#128274;</div>
+            <h3>Multi-controller</h3>
+            <p>7 controleurs specialises : primary, IT, security, supervisor, business, backup, hardware. Chacun gere son domaine.</p>
+        </div>
+        <div class="feature">
+            <div class="feature-icon">&#128202;</div>
+            <h3>Token budget</h3>
+            <p>Suivi en temps reel de la consommation par provider. Alertes quota, rotation automatique, historique 7 jours en base SQLite.</p>
+        </div>
+    </div>
+</section>
+
+<section id="providers">
+    <div class="section-label">Ecosysteme</div>
+    <h2>16 providers, 280K+ requetes/jour</h2>
+    <p style="color:var(--muted); font-size:15px; margin-bottom:32px; max-width:700px;">Tous les providers gratuits du marche, orchestres intelligemment. Le systeme repartit la charge pour maximiser la disponibilite.</p>
+    <div class="providers-grid">
+        <div class="provider-tag active">Cerebras &bull; 100K RPD</div>
+        <div class="provider-tag active">Mistral &bull; 50K RPD</div>
+        <div class="provider-tag active">HuggingFace &bull; 50K RPD</div>
+        <div class="provider-tag active">Groq &bull; 14.4K RPD</div>
+        <div class="provider-tag active">DeepSeek &bull; 20K RPD</div>
+        <div class="provider-tag active">Together &bull; 10K RPD</div>
+        <div class="provider-tag active">NVIDIA NIM &bull; 5K RPD</div>
+        <div class="provider-tag active">Gemini Flash &bull; 1.5K RPD</div>
+        <div class="provider-tag">xAI Grok &bull; 2K RPD</div>
+        <div class="provider-tag">OpenRouter &bull; 50K RPD</div>
+        <div class="provider-tag">SambaNova &bull; 100 RPD</div>
+        <div class="provider-tag">Cohere &bull; 1K RPD</div>
+        <div class="provider-tag">Perplexity &bull; 5K RPD</div>
+        <div class="provider-tag">Minimax &bull; 10K RPD</div>
+        <div class="provider-tag">OpenAI &bull; fallback</div>
+        <div class="provider-tag">Ollama &bull; local</div>
+    </div>
+</section>
+
+<section id="architecture">
+    <div class="section-label">Architecture</div>
+    <h2>Concu pour l'autonomie</h2>
+    <div class="arch-diagram">
+<span class="rd">Providers</span> (16 APIs)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="rd">Controllers</span> (7 domaines)
+  cerebras, groq, mistral...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;primary, it, security...
+         &darr; scoring                         &darr; labels
+    <span class="hl">free_router.js</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl">Agents</span> (heartbeat 15s)
+    quota + taskType + fiabilite&nbsp;&nbsp;&nbsp;&nbsp;xr1-core, xr1-web
+         &darr;                                  &darr;
+    <span class="cy">xr1-core</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cy">SQLite DB</span>
+    heartbeat, A2A, tokens&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;agents, missions, tokens
+         &darr;                                  &darr;
+    <span class="cy">xr1-web</span> :8888&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cy">HDMI Dashboard</span>
+    portail + API REST&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TUI curses temps reel
+    </div>
+
+    <div class="terminal">
+        <div class="terminal-header">
+            <div class="terminal-dot" style="background:#ff5f57"></div>
+            <div class="terminal-dot" style="background:#ffbd2e"></div>
+            <div class="terminal-dot" style="background:#28c840"></div>
+        </div>
+        <div class="terminal-body">
+<span class="comment"># Routage intelligent — le provider optimal est choisi automatiquement</span>
+<span class="prompt">$</span> curl -X POST http://pi:8888/api/chat -d '{"message":"Analyse ce code", "taskType":"review"}'
+
+<span class="output">[FREE-ROUTER] Scoring: mistral(97), groq(91), gemini-flash(84) [review]</span>
+<span class="output">[FREE-ROUTER] Essai &rarr; mistral (mistral-small-latest)</span>
+<span class="output">[FREE-ROUTER] &#10003; mistral &mdash; 263 tokens</span>
+
+<span class="comment"># Capacite du systeme</span>
+<span class="prompt">$</span> curl http://pi:8888/api/capacity
+
+<span class="output">{"providers_active": 9, "total_rpd_remaining": 247851, "task_types": 10}</span>
+        </div>
+    </div>
+</section>
+
+<div class="cta">
+    <h2>Open Source. Edge-first. Autonome.</h2>
+    <p>Deploye sur un Raspberry Pi, orchestre 16 providers IA, 280K requetes gratuites par jour.</p>
+    <a href="https://github.com/structure-xr1" class="btn">GitHub</a>
+    <a href="http://192.168.1.14:8888" class="btn btn-ghost">Dashboard Live</a>
+</div>
+
+<footer>
+    &copy; 2026 Structure XR1 &mdash; Framework multi-agents IA autonome
+</footer>
+
+</body>
+</html>
