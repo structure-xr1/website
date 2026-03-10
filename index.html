@@ -3,49 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>STRUCTURE XR1 — Association Esport & Gaming | Antibes</title>
-    <meta name="description" content="Association esport, gaming, streaming et culture numerique basee a Antibes. Organisation de LAN, seminaires, education au codage.">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <title>STRUCTURE XR1 — Association Esport | Antibes</title>
+    <meta name="description" content="STRUCTURE XR1 — Association esport multi-jeux basee a Antibes. Competitions, streaming, education et communaute gaming sur la Cote d'Azur.">
+    <meta name="theme-color" content="#0D0D0D">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* ═══════════════════════════════════════════
+           STRUCTURE XR1 — Brand Book Compliance
+           Palette: Or Royal #D4AF37, Noir Profond #0D0D0D
+           Typo: Integral CF (simulated via Montserrat 900), Montserrat, Rajdhani
+           Effects: Gold glow (no drop shadows), grain overlay, gold separators
+        ═══════════════════════════════════════════ */
         :root {
-            --bg: #050508;
-            --panel: #0c0c12;
-            --border: #1a1a2e;
-            --white: #f0f0f5;
-            --muted: #555570;
-            --cyan: #00FFCC;
-            --magenta: #FF00FF;
-            --red: #E60000;
-            --cyan-glow: rgba(0,255,204,0.15);
-            --magenta-glow: rgba(255,0,255,0.1);
+            --or-royal: #D4AF37;
+            --or-dark: #996515;
+            --noir-profond: #0D0D0D;
+            --blanc: #FFFFFF;
+            --gris-acier: #4A4A4A;
+            --or-glow: rgba(212,175,55,0.15);
+            --or-glow-strong: rgba(212,175,55,0.3);
+            --carbon-bg: #0D0D0D;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { background: var(--bg); color: var(--white); font-family: 'Inter', sans-serif; overflow-x: hidden; }
-        a { color: var(--cyan); text-decoration: none; transition: color 0.2s; }
-        a:hover { color: var(--magenta); }
 
-        /* Glitch scanline overlay */
+        body {
+            background: var(--noir-profond);
+            color: var(--blanc);
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Grain texture overlay (brand book element #1) */
         body::after {
             content: '';
             position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-            background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,255,204,0.01) 2px, rgba(0,255,204,0.01) 4px);
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
             pointer-events: none; z-index: 9999;
+            opacity: 0.5;
         }
 
-        /* Nav */
+        a { color: var(--or-royal); text-decoration: none; transition: color 0.3s; }
+        a:hover { color: var(--blanc); }
+
+        /* Gold separator (brand book element #2) */
+        .gold-sep {
+            width: 80px; height: 1px;
+            background: linear-gradient(90deg, transparent, var(--or-royal), transparent);
+            margin: 24px 0;
+        }
+        .gold-sep-center { margin: 24px auto; }
+
+        /* Dynamic frame corners (brand book element #3) */
+        .dynamic-frame {
+            position: relative;
+            border: 1px solid rgba(212,175,55,0.2);
+        }
+        .dynamic-frame::before,
+        .dynamic-frame::after {
+            content: '';
+            position: absolute;
+            width: 20px; height: 20px;
+            border-color: var(--or-royal);
+            border-style: solid;
+        }
+        .dynamic-frame::before {
+            top: -1px; left: -1px;
+            border-width: 2px 0 0 2px;
+        }
+        .dynamic-frame::after {
+            bottom: -1px; right: -1px;
+            border-width: 0 2px 2px 0;
+        }
+
+        /* ─── NAV ─── */
         nav {
             position: fixed; top: 0; width: 100%; z-index: 100;
-            padding: 18px 48px;
+            padding: 16px 48px;
             display: flex; justify-content: space-between; align-items: center;
-            background: rgba(5,5,8,0.9); backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--border);
+            background: rgba(13,13,13,0.92); backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(212,175,55,0.15);
         }
-        .logo { font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 700; letter-spacing: 5px; text-transform: uppercase; }
-        .logo span { color: var(--cyan); text-shadow: 0 0 20px var(--cyan-glow); }
-        .nav-links a { color: var(--muted); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; margin-left: 32px; transition: color 0.2s; }
-        .nav-links a:hover { color: var(--cyan); }
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 13px; font-weight: 900;
+            letter-spacing: 6px; text-transform: uppercase;
+            color: var(--blanc);
+        }
+        .logo span {
+            color: var(--or-royal);
+            text-shadow: 0 0 20px var(--or-glow);
+        }
+        .nav-links a {
+            color: var(--gris-acier);
+            font-size: 10px; font-weight: 600;
+            letter-spacing: 3px; text-transform: uppercase;
+            margin-left: 28px;
+            transition: color 0.3s, text-shadow 0.3s;
+        }
+        .nav-links a:hover {
+            color: var(--or-royal);
+            text-shadow: 0 0 12px var(--or-glow);
+        }
 
-        /* Hero */
+        /* ─── HERO ─── */
         .hero {
             min-height: 100vh; display: flex; flex-direction: column;
             justify-content: center; align-items: center; text-align: center;
@@ -54,165 +115,373 @@
         .hero::before {
             content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
             background:
-                radial-gradient(ellipse at 30% 20%, rgba(0,255,204,0.06) 0%, transparent 50%),
-                radial-gradient(ellipse at 70% 80%, rgba(255,0,255,0.04) 0%, transparent 50%);
+                radial-gradient(ellipse at 50% 30%, rgba(212,175,55,0.06) 0%, transparent 60%),
+                radial-gradient(ellipse at 50% 100%, rgba(153,101,21,0.04) 0%, transparent 50%);
             pointer-events: none;
         }
-        .hero-badge {
-            display: inline-flex; align-items: center; gap: 8px;
-            padding: 8px 20px; border: 1px solid var(--border); border-radius: 24px;
-            font-family: 'JetBrains Mono', monospace; font-size: 10px;
-            letter-spacing: 3px; text-transform: uppercase; color: var(--muted);
-            margin-bottom: 40px;
+        /* Carbon fiber texture hint */
+        .hero::after {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background:
+                repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(255,255,255,0.005) 2px, rgba(255,255,255,0.005) 4px);
+            pointer-events: none;
         }
-        .hero-badge .dot { width: 6px; height: 6px; background: var(--cyan); border-radius: 50%; box-shadow: 0 0 8px var(--cyan); animation: pulse 2s infinite; }
+
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 10px;
+            padding: 10px 24px;
+            border: 1px solid rgba(212,175,55,0.3);
+            font-size: 10px; font-weight: 700;
+            letter-spacing: 4px; text-transform: uppercase;
+            color: var(--or-royal);
+            margin-bottom: 48px;
+            position: relative;
+        }
+        .hero-badge .dot {
+            width: 6px; height: 6px;
+            background: var(--or-royal);
+            box-shadow: 0 0 10px var(--or-royal);
+            animation: pulse 2s infinite;
+        }
         @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.3; } }
 
         h1 {
-            font-size: clamp(52px, 9vw, 110px); font-weight: 900;
-            line-height: 0.95; letter-spacing: -3px; margin-bottom: 28px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(56px, 10vw, 120px);
+            font-weight: 900;
+            line-height: 0.9;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            margin-bottom: 32px;
             position: relative;
         }
         h1 .xr1 {
-            color: var(--cyan);
-            text-shadow: 0 0 40px rgba(0,255,204,0.3), 0 0 80px rgba(0,255,204,0.1);
+            display: block;
+            font-size: clamp(80px, 16vw, 180px);
+            color: var(--or-royal);
+            text-shadow: 0 0 60px var(--or-glow-strong), 0 0 120px var(--or-glow);
+            letter-spacing: 16px;
         }
+
         .hero-sub {
-            font-size: clamp(15px, 2vw, 20px); color: var(--muted);
-            max-width: 620px; line-height: 1.7; font-weight: 300;
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(14px, 1.8vw, 18px);
+            color: var(--gris-acier);
+            max-width: 600px; line-height: 1.8;
+            font-weight: 400;
         }
-        .hero-sub strong { color: var(--white); font-weight: 500; }
+        .hero-sub strong { color: var(--blanc); font-weight: 600; }
 
-        .hero-stats { display: flex; gap: 56px; margin-top: 64px; }
-        .hero-stat { text-align: center; }
-        .hero-stat .num {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 40px; font-weight: 700; color: var(--cyan);
-            text-shadow: 0 0 20px var(--cyan-glow);
+        .hero-metrics {
+            display: flex; gap: 64px; margin-top: 64px;
         }
-        .hero-stat .label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 3px; margin-top: 6px; }
+        .metric { text-align: center; }
+        .metric .val {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 42px; font-weight: 700;
+            color: var(--or-royal);
+            text-shadow: 0 0 20px var(--or-glow);
+            line-height: 1;
+        }
+        .metric .lbl {
+            font-size: 9px; font-weight: 600;
+            color: var(--gris-acier);
+            text-transform: uppercase;
+            letter-spacing: 3px; margin-top: 8px;
+        }
 
-        /* Scroll indicator */
-        .scroll-hint { position: absolute; bottom: 40px; display: flex; flex-direction: column; align-items: center; gap: 8px; }
-        .scroll-hint span { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); }
-        .scroll-line { width: 1px; height: 32px; background: linear-gradient(to bottom, var(--cyan), transparent); animation: scrollDown 1.5s infinite; }
+        .scroll-hint {
+            position: absolute; bottom: 40px;
+            display: flex; flex-direction: column; align-items: center; gap: 8px;
+        }
+        .scroll-hint span {
+            font-size: 9px; letter-spacing: 4px;
+            text-transform: uppercase; color: var(--gris-acier); font-weight: 600;
+        }
+        .scroll-line {
+            width: 1px; height: 32px;
+            background: linear-gradient(to bottom, var(--or-royal), transparent);
+            animation: scrollDown 1.5s infinite;
+        }
         @keyframes scrollDown { 0% { opacity:1; transform:translateY(0); } 100% { opacity:0; transform:translateY(16px); } }
 
-        /* Sections */
+        /* ─── SECTIONS ─── */
         section { padding: 120px 48px; max-width: 1200px; margin: 0 auto; }
         .section-label {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 10px; letter-spacing: 5px; text-transform: uppercase;
-            color: var(--magenta); margin-bottom: 16px;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 12px; font-weight: 700;
+            letter-spacing: 5px; text-transform: uppercase;
+            color: var(--or-royal);
+            margin-bottom: 12px;
         }
-        h2 { font-size: clamp(32px, 5vw, 48px); font-weight: 700; margin-bottom: 20px; letter-spacing: -1px; line-height: 1.1; }
-        .section-desc { color: var(--muted); font-size: 16px; line-height: 1.7; max-width: 640px; margin-bottom: 56px; }
+        h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(28px, 5vw, 44px);
+            font-weight: 900; letter-spacing: 3px;
+            text-transform: uppercase;
+            line-height: 1.1;
+        }
+        .section-desc {
+            color: var(--gris-acier); font-size: 15px;
+            line-height: 1.8; max-width: 600px; margin-bottom: 56px;
+        }
 
-        /* Activities grid */
-        .activities { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+        /* ─── ACTIVITIES (Multi-game) ─── */
+        .activities {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
         .activity {
-            background: var(--panel); border: 1px solid var(--border);
-            border-radius: 16px; padding: 36px 28px; position: relative;
+            background: rgba(13,13,13,0.8);
+            border: 1px solid rgba(212,175,55,0.1);
+            padding: 36px 28px;
+            position: relative;
             transition: border-color 0.3s, transform 0.2s;
             overflow: hidden;
         }
-        .activity::before {
-            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-            background: linear-gradient(90deg, var(--cyan), var(--magenta));
-            opacity: 0; transition: opacity 0.3s;
+        /* Dynamic frame corners on cards */
+        .activity::before,
+        .activity::after {
+            content: '';
+            position: absolute;
+            width: 16px; height: 16px;
+            border-color: var(--or-royal);
+            border-style: solid;
+            opacity: 0;
+            transition: opacity 0.3s;
         }
-        .activity:hover { border-color: #2a2a40; transform: translateY(-2px); }
-        .activity:hover::before { opacity: 1; }
-        .activity-icon { font-size: 32px; margin-bottom: 20px; }
-        .activity h3 { font-size: 17px; font-weight: 600; margin-bottom: 10px; }
-        .activity p { font-size: 13px; color: var(--muted); line-height: 1.7; }
+        .activity::before { top: -1px; left: -1px; border-width: 2px 0 0 2px; }
+        .activity::after { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
+        .activity:hover { border-color: rgba(212,175,55,0.3); transform: translateY(-2px); }
+        .activity:hover::before, .activity:hover::after { opacity: 1; }
 
-        /* About section */
-        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
-        .about-text p { color: var(--muted); font-size: 15px; line-height: 1.8; margin-bottom: 16px; }
-        .about-text p strong { color: var(--white); }
-        .about-card {
-            background: var(--panel); border: 1px solid var(--border);
-            border-radius: 16px; padding: 36px; position: relative;
+        .activity-icon {
+            font-size: 28px; margin-bottom: 20px;
+            filter: grayscale(0.3);
         }
-        .about-card::after {
-            content: ''; position: absolute; top: -1px; left: 48px; right: 48px; height: 1px;
-            background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+        .activity h3 {
+            font-size: 15px; font-weight: 800;
+            text-transform: uppercase; letter-spacing: 2px;
+            margin-bottom: 12px;
         }
-        .info-row { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.04); font-size: 13px; }
-        .info-row:last-child { border: none; }
-        .info-label { color: var(--muted); }
-        .info-value { color: var(--white); font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+        .activity p { font-size: 13px; color: var(--gris-acier); line-height: 1.7; }
 
-        /* Events section */
-        .events-timeline { display: flex; flex-direction: column; gap: 20px; }
-        .event-card {
-            background: var(--panel); border: 1px solid var(--border);
-            border-radius: 12px; padding: 28px 32px;
-            display: grid; grid-template-columns: 80px 1fr auto; gap: 24px; align-items: center;
+        /* ─── ROSTER / GAMES ─── */
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+        }
+        .game-card {
+            background: rgba(13,13,13,0.8);
+            border: 1px solid rgba(212,175,55,0.1);
+            padding: 28px 20px;
+            text-align: center;
+            position: relative;
             transition: border-color 0.3s;
         }
-        .event-card:hover { border-color: var(--cyan); }
-        .event-date {
-            font-family: 'JetBrains Mono', monospace; text-align: center;
+        .game-card:hover { border-color: rgba(212,175,55,0.4); }
+        .game-card .game-icon { font-size: 36px; margin-bottom: 12px; }
+        .game-card h3 {
+            font-size: 13px; font-weight: 800;
+            text-transform: uppercase; letter-spacing: 2px;
         }
-        .event-date .day { font-size: 28px; font-weight: 700; color: var(--cyan); line-height: 1; }
-        .event-date .month { font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: var(--muted); }
-        .event-info h3 { font-size: 16px; margin-bottom: 4px; }
-        .event-info p { font-size: 12px; color: var(--muted); }
+        .game-card .game-status {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 11px; font-weight: 600;
+            color: var(--or-royal); margin-top: 8px;
+            letter-spacing: 1px;
+        }
+        .game-card.active { border-color: rgba(212,175,55,0.4); }
+        .game-card.active::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0; height: 2px;
+            background: linear-gradient(90deg, transparent, var(--or-royal), transparent);
+        }
+        .game-card.coming { opacity: 0.5; }
+        .game-card.coming .game-status { color: var(--gris-acier); }
+
+        /* ─── ABOUT ─── */
+        .about-grid {
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 48px; align-items: start;
+        }
+        .about-text p {
+            color: var(--gris-acier); font-size: 14px;
+            line-height: 1.8; margin-bottom: 16px;
+        }
+        .about-text p strong { color: var(--blanc); }
+        .about-card {
+            background: rgba(13,13,13,0.8);
+            border: 1px solid rgba(212,175,55,0.15);
+            padding: 32px;
+            position: relative;
+        }
+        /* Dynamic frame on info card */
+        .about-card::before,
+        .about-card::after {
+            content: '';
+            position: absolute;
+            width: 20px; height: 20px;
+            border-color: var(--or-royal);
+            border-style: solid;
+        }
+        .about-card::before { top: -1px; left: -1px; border-width: 2px 0 0 2px; }
+        .about-card::after { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
+
+        .info-row {
+            display: flex; justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(212,175,55,0.06);
+            font-size: 13px;
+        }
+        .info-row:last-child { border: none; }
+        .info-label { color: var(--gris-acier); font-weight: 500; }
+        .info-value {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 13px; font-weight: 600;
+            color: var(--blanc);
+        }
+
+        /* ─── EVENTS ─── */
+        .events-timeline { display: flex; flex-direction: column; gap: 16px; }
+        .event-card {
+            background: rgba(13,13,13,0.8);
+            border: 1px solid rgba(212,175,55,0.1);
+            padding: 24px 28px;
+            display: grid; grid-template-columns: 80px 1fr auto;
+            gap: 24px; align-items: center;
+            transition: border-color 0.3s;
+        }
+        .event-card:hover { border-color: rgba(212,175,55,0.3); }
+        .event-date { text-align: center; }
+        .event-date .day {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 28px; font-weight: 700;
+            color: var(--or-royal); line-height: 1;
+        }
+        .event-date .month {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 10px; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 2px;
+            color: var(--gris-acier);
+        }
+        .event-info h3 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+        .event-info p { font-size: 12px; color: var(--gris-acier); }
         .event-tag {
-            font-family: 'JetBrains Mono', monospace; font-size: 10px;
-            padding: 4px 12px; border-radius: 4px; letter-spacing: 1px;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 10px; font-weight: 700;
+            padding: 4px 14px; letter-spacing: 2px;
             text-transform: uppercase; white-space: nowrap;
         }
-        .tag-lan { background: rgba(0,255,204,0.1); color: var(--cyan); border: 1px solid rgba(0,255,204,0.2); }
-        .tag-workshop { background: rgba(255,0,255,0.1); color: var(--magenta); border: 1px solid rgba(255,0,255,0.2); }
-        .tag-stream { background: rgba(230,0,0,0.1); color: var(--red); border: 1px solid rgba(230,0,0,0.2); }
+        .tag-lan { background: rgba(212,175,55,0.1); color: var(--or-royal); border: 1px solid rgba(212,175,55,0.25); }
+        .tag-workshop { background: rgba(255,255,255,0.05); color: var(--blanc); border: 1px solid rgba(255,255,255,0.1); }
+        .tag-stream { background: rgba(212,175,55,0.05); color: var(--or-dark); border: 1px solid rgba(153,101,21,0.3); }
 
-        /* CTA */
-        .cta { text-align: center; padding: 120px 24px; position: relative; }
+        /* ─── CTA ─── */
+        .cta {
+            text-align: center; padding: 120px 24px;
+            max-width: 1200px; margin: 0 auto;
+            position: relative;
+        }
         .cta::before {
-            content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
-            width: 600px; height: 600px; border-radius: 50%;
-            background: radial-gradient(circle, rgba(0,255,204,0.04) 0%, transparent 70%);
+            content: ''; position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%,-50%);
+            width: 500px; height: 500px; border-radius: 50%;
+            background: radial-gradient(circle, rgba(212,175,55,0.04) 0%, transparent 70%);
             pointer-events: none;
         }
         .cta h2 { margin-bottom: 16px; }
-        .cta p { color: var(--muted); font-size: 16px; margin-bottom: 40px; max-width: 500px; margin-left: auto; margin-right: auto; line-height: 1.7; }
+        .cta p {
+            color: var(--gris-acier); font-size: 15px;
+            margin-bottom: 40px; max-width: 500px;
+            margin-left: auto; margin-right: auto; line-height: 1.8;
+        }
         .btn-row { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
         .btn {
-            display: inline-block; padding: 16px 40px;
-            font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600;
-            letter-spacing: 1px; border: none; border-radius: 8px;
-            cursor: pointer; text-decoration: none; transition: all 0.2s;
+            display: inline-block; padding: 14px 36px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 11px; font-weight: 800;
+            letter-spacing: 3px; text-transform: uppercase;
+            border: none; cursor: pointer; text-decoration: none;
+            transition: all 0.3s;
         }
         .btn:hover { text-decoration: none; }
         .btn-primary {
-            background: var(--cyan); color: #050508;
-            box-shadow: 0 0 20px rgba(0,255,204,0.2);
+            background: var(--or-royal); color: var(--noir-profond);
+            box-shadow: 0 0 30px var(--or-glow);
         }
-        .btn-primary:hover { box-shadow: 0 0 40px rgba(0,255,204,0.3); color: #050508; }
-        .btn-ghost { background: none; border: 1px solid var(--border); color: var(--white); }
-        .btn-ghost:hover { border-color: var(--muted); color: var(--white); }
+        .btn-primary:hover {
+            box-shadow: 0 0 50px var(--or-glow-strong);
+            background: #e0c050;
+            color: var(--noir-profond);
+        }
+        .btn-ghost {
+            background: none;
+            border: 1px solid rgba(212,175,55,0.3);
+            color: var(--or-royal);
+        }
+        .btn-ghost:hover {
+            border-color: var(--or-royal);
+            color: var(--blanc);
+        }
 
-        /* Footer */
+        /* ─── FOOTER ─── */
         footer {
-            padding: 48px; border-top: 1px solid var(--border);
-            text-align: center; font-size: 11px; color: var(--muted);
-            letter-spacing: 1px;
+            padding: 48px;
+            border-top: 1px solid rgba(212,175,55,0.1);
+            text-align: center;
         }
-        footer .legal { margin-top: 8px; font-size: 10px; color: #333; }
+        footer .brand {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 11px; font-weight: 900;
+            letter-spacing: 5px; text-transform: uppercase;
+            color: var(--or-royal);
+            margin-bottom: 12px;
+        }
+        footer .copy {
+            font-size: 11px; color: var(--gris-acier);
+            letter-spacing: 1px; margin-bottom: 8px;
+        }
+        footer .legal {
+            font-size: 9px; color: #333; letter-spacing: 1px;
+        }
+        footer .motto {
+            font-size: 11px; color: var(--gris-acier);
+            font-style: italic; margin-top: 16px;
+            opacity: 0.6;
+        }
 
-        /* Responsive */
+        /* ─── SPEED TEXTURE (brand book advanced element) ─── */
+        .speed-lines {
+            position: absolute; right: 0; top: 50%;
+            transform: translateY(-50%);
+            width: 200px; height: 60px;
+            opacity: 0.08;
+            pointer-events: none;
+        }
+        .speed-lines div {
+            height: 3px; margin-bottom: 8px;
+            background: linear-gradient(90deg, var(--or-royal), transparent);
+        }
+        .speed-lines div:nth-child(1) { width: 100%; }
+        .speed-lines div:nth-child(2) { width: 75%; }
+        .speed-lines div:nth-child(3) { width: 90%; }
+        .speed-lines div:nth-child(4) { width: 60%; height: 2px; }
+
+        /* ─── RESPONSIVE ─── */
         @media (max-width: 768px) {
             nav { padding: 14px 20px; }
             .nav-links { display: none; }
             section { padding: 80px 20px; }
-            .hero-stats { flex-direction: column; gap: 28px; }
+            .hero-metrics { flex-direction: column; gap: 28px; }
             .about-grid { grid-template-columns: 1fr; }
             .event-card { grid-template-columns: 1fr; gap: 12px; }
             .event-date { text-align: left; }
-            h1 { letter-spacing: -1px; }
+            h1 { letter-spacing: 4px; }
+            h1 .xr1 { letter-spacing: 8px; }
+            .games-grid { grid-template-columns: repeat(2, 1fr); }
         }
     </style>
 </head>
@@ -222,6 +491,7 @@
     <div class="logo">STRUCTURE <span>XR1</span></div>
     <div class="nav-links">
         <a href="#activites">Activites</a>
+        <a href="#games">Rosters</a>
         <a href="#association">Association</a>
         <a href="#events">Events</a>
         <a href="#contact">Contact</a>
@@ -229,61 +499,101 @@
 </nav>
 
 <div class="hero">
-    <div class="hero-badge"><div class="dot"></div> Association esport &mdash; Antibes</div>
-    <h1>STRUCTURE<br><span class="xr1">XR1</span></h1>
-    <p class="hero-sub">Association <strong>esport, gaming, streaming</strong> et culture numerique. On cree des ponts entre la technologie, le jeu et l'education.</p>
-    <div class="hero-stats">
-        <div class="hero-stat"><div class="num">2026</div><div class="label">Fondee</div></div>
-        <div class="hero-stat"><div class="num">06</div><div class="label">Antibes</div></div>
-        <div class="hero-stat"><div class="num">4</div><div class="label">Piliers</div></div>
+    <div class="hero-badge"><div class="dot"></div> Association esport multi-jeux &mdash; Antibes</div>
+    <h1>STRUCTURE<span class="xr1">XR1</span></h1>
+    <p class="hero-sub">Association <strong>esport</strong> multi-jeux sur la <strong>Cote d'Azur</strong>. Competition, streaming, education et communaute gaming.</p>
+    <div class="gold-sep gold-sep-center"></div>
+    <div class="hero-metrics">
+        <div class="metric"><div class="val">2026</div><div class="lbl">Fondee</div></div>
+        <div class="metric"><div class="val">06</div><div class="lbl">Antibes</div></div>
+        <div class="metric"><div class="val">4</div><div class="lbl">Piliers</div></div>
     </div>
     <div class="scroll-hint">
         <span>Scroll</span>
         <div class="scroll-line"></div>
     </div>
+    <div class="speed-lines">
+        <div></div><div></div><div></div><div></div>
+    </div>
 </div>
 
 <section id="activites">
-    <div class="section-label">// Nos activites</div>
+    <div class="section-label">Nos piliers</div>
     <h2>Esport. Tech. Communaute.</h2>
-    <p class="section-desc">Quatre piliers pour une association qui fait le lien entre competition, creation de contenu, education et cohesion sociale.</p>
+    <div class="gold-sep"></div>
+    <p class="section-desc">Quatre axes pour une structure qui allie competition de haut niveau, creation de contenu, apprentissage et cohesion sociale.</p>
     <div class="activities">
         <div class="activity">
-            <div class="activity-icon">&#127918;</div>
-            <h3>Esport & Competitions</h3>
-            <p>Organisation et participation a des competitions de haut niveau. Gestion d'equipes, coaching, analyses strategiques et suivi de performances.</p>
+            <div class="activity-icon">&#127942;</div>
+            <h3>Competitions</h3>
+            <p>Equipes competitives multi-jeux. Coaching, analyses strategiques, suivi de performances et participation aux tournois majeurs.</p>
         </div>
         <div class="activity">
             <div class="activity-icon">&#127909;</div>
-            <h3>Streaming & Contenu</h3>
-            <p>Presence strategique sur Twitch et YouTube. Publication de contenus digitaux, creation de medias et couverture d'evenements en live.</p>
+            <h3>Streaming & Media</h3>
+            <p>Presence sur Twitch et YouTube. Production de contenus, couverture d'evenements live, highlights et creation communautaire.</p>
         </div>
         <div class="activity">
             <div class="activity-icon">&#128187;</div>
             <h3>Education & Code</h3>
-            <p>Apprentissage du codage, workshops tech et seminaires. Creer des passerelles entre l'informatique, les nouvelles technologies et le divertissement.</p>
+            <p>Workshops tech, initiation au codage, seminaires innovation. Creer des passerelles entre technologie et divertissement.</p>
         </div>
         <div class="activity">
             <div class="activity-icon">&#129309;</div>
-            <h3>Communaute & Social</h3>
-            <p>Cohesion sociale, developpement personnel, organisation de LAN parties. Un espace ou chacun trouve sa place dans la culture numerique.</p>
+            <h3>Communaute</h3>
+            <p>LAN parties, cohesion sociale, developpement personnel. Un espace inclusif dans la culture numerique et gaming.</p>
+        </div>
+    </div>
+</section>
+
+<section id="games">
+    <div class="section-label">Nos rosters</div>
+    <h2>Multi-jeux</h2>
+    <div class="gold-sep"></div>
+    <p class="section-desc">La structure se developpe sur plusieurs titres. Le roster EA FC est actif, d'autres divisions arrivent.</p>
+    <div class="games-grid">
+        <div class="game-card active">
+            <div class="game-icon">&#9917;</div>
+            <h3>EA FC 26</h3>
+            <div class="game-status">ROSTER ACTIF</div>
+        </div>
+        <div class="game-card coming">
+            <div class="game-icon">&#128299;</div>
+            <h3>Valorant</h3>
+            <div class="game-status">A VENIR</div>
+        </div>
+        <div class="game-card coming">
+            <div class="game-icon">&#127918;</div>
+            <h3>Rocket League</h3>
+            <div class="game-status">A VENIR</div>
+        </div>
+        <div class="game-card coming">
+            <div class="game-icon">&#9876;</div>
+            <h3>League of Legends</h3>
+            <div class="game-status">A VENIR</div>
+        </div>
+        <div class="game-card coming">
+            <div class="game-icon">&#128163;</div>
+            <h3>Fortnite</h3>
+            <div class="game-status">A VENIR</div>
         </div>
     </div>
 </section>
 
 <section id="association">
-    <div class="section-label">// L'association</div>
+    <div class="section-label">La structure</div>
     <h2>Qui sommes-nous</h2>
+    <div class="gold-sep"></div>
     <div class="about-grid">
         <div class="about-text">
             <p>
-                <strong>STRUCTURE XR1</strong> est une association declaree (loi 1901) basee a <strong>Antibes</strong>, dans les Alpes-Maritimes. Fondee en janvier 2026, elle a pour vocation le developpement, la promotion et l'organisation d'activites liees au sport electronique.
+                <strong>STRUCTURE XR1</strong> est une association loi 1901 basee a <strong>Antibes</strong>, dans les Alpes-Maritimes. Fondee en janvier 2026, elle developpe et promeut l'esport competitif multi-jeux sur la Cote d'Azur.
             </p>
             <p>
-                Nos activites couvrent l'<strong>esport competitif</strong>, le <strong>streaming</strong> sur Twitch et YouTube, l'<strong>education au codage</strong> et aux nouvelles technologies, ainsi que la <strong>cohesion sociale</strong> a travers le gaming.
+                Nos activites : <strong>competitions esport</strong>, <strong>streaming</strong> sur Twitch et YouTube, <strong>education au codage</strong> et aux technologies, <strong>organisation d'evenements</strong> gaming (LAN parties, workshops).
             </p>
             <p>
-                Nous organisons des <strong>LAN parties</strong>, des <strong>seminaires tech</strong>, et explorons les univers hybrides entre science, technologie et culture harmonique.
+                La structure porte une identite visuelle premium &mdash; or et noir &mdash; qui reflete notre ambition de prestige et d'excellence dans l'ecosysteme esport francais.
             </p>
         </div>
         <div class="about-card">
@@ -299,15 +609,16 @@
 </section>
 
 <section id="events">
-    <div class="section-label">// Evenements</div>
-    <h2>A venir</h2>
-    <p class="section-desc">LAN parties, workshops, streams — l'agenda de la structure.</p>
+    <div class="section-label">Agenda</div>
+    <h2>Evenements</h2>
+    <div class="gold-sep"></div>
+    <p class="section-desc">LAN parties, workshops, streams &mdash; l'agenda de la structure XR1.</p>
     <div class="events-timeline">
         <div class="event-card">
             <div class="event-date"><div class="day">--</div><div class="month">TBD</div></div>
             <div class="event-info">
                 <h3>LAN Party #1</h3>
-                <p>Premiere LAN officielle de la structure. Tournois multi-jeux, ambiance esport.</p>
+                <p>Premiere LAN officielle. Tournois multi-jeux, ambiance esport, Cote d'Azur.</p>
             </div>
             <div class="event-tag tag-lan">LAN</div>
         </div>
@@ -315,7 +626,7 @@
             <div class="event-date"><div class="day">--</div><div class="month">TBD</div></div>
             <div class="event-info">
                 <h3>Workshop Code & Gaming</h3>
-                <p>Initiation au code a travers le game dev. Ouvert a tous niveaux.</p>
+                <p>Initiation au code par le game dev. Ouvert a tous niveaux.</p>
             </div>
             <div class="event-tag tag-workshop">Workshop</div>
         </div>
@@ -323,7 +634,7 @@
             <div class="event-date"><div class="day">--</div><div class="month">TBD</div></div>
             <div class="event-info">
                 <h3>Stream Night</h3>
-                <p>Soiree streaming communautaire sur Twitch. Games, talks et decouverte.</p>
+                <p>Soiree streaming communautaire sur Twitch. Games, talks, decouverte.</p>
             </div>
             <div class="event-tag tag-stream">Stream</div>
         </div>
@@ -332,7 +643,8 @@
 
 <div class="cta" id="contact">
     <h2>Rejoins la structure</h2>
-    <p>Joueur, streamer, dev ou simplement curieux. Viens construire avec nous l'avenir de l'esport sur la Cote d'Azur.</p>
+    <div class="gold-sep gold-sep-center"></div>
+    <p>Joueur, streamer, dev ou simplement curieux. Construis avec nous l'esport sur la Cote d'Azur.</p>
     <div class="btn-row">
         <a href="https://discord.gg/" class="btn btn-primary">Discord</a>
         <a href="https://twitch.tv/" class="btn btn-ghost">Twitch</a>
@@ -340,9 +652,11 @@
 </div>
 
 <footer>
-    &copy; 2026 STRUCTURE XR1 &mdash; Association esport &amp; gaming &mdash; Antibes, France
+    <div class="brand">STRUCTURE XR1</div>
+    <div class="copy">&copy; 2026 STRUCTURE XR1 &mdash; Association esport multi-jeux &mdash; Antibes, France</div>
     <div class="legal">Association loi 1901 &mdash; RNA W061018338 &mdash; SIREN 999 612 666</div>
-    <!-- STATUS_START -->v1.0.0<!-- STATUS_END -->
+    <div class="motto">"La coherence cree le prestige."</div>
+    <!-- STATUS_START -->v2.0.0<!-- STATUS_END -->
 </footer>
 
 </body>
