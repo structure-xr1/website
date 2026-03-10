@@ -470,6 +470,161 @@
         .speed-lines div:nth-child(3) { width: 90%; }
         .speed-lines div:nth-child(4) { width: 60%; height: 2px; }
 
+        /* ─── MEMBRES ─── */
+        .membres-container {
+            max-width: 680px;
+            margin: 0 auto;
+        }
+        .discord-login-box {
+            background: rgba(13,13,13,0.8);
+            border: 1px solid rgba(212,175,55,0.15);
+            padding: 56px 40px;
+            text-align: center;
+            position: relative;
+        }
+        .discord-login-box::before,
+        .discord-login-box::after {
+            content: '';
+            position: absolute;
+            width: 20px; height: 20px;
+            border-color: var(--or-royal);
+            border-style: solid;
+        }
+        .discord-login-box::before { top: -1px; left: -1px; border-width: 2px 0 0 2px; }
+        .discord-login-box::after { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
+
+        .discord-login-box p {
+            color: var(--gris-acier); font-size: 13px;
+            line-height: 1.7; margin-bottom: 32px;
+        }
+
+        .btn-discord {
+            display: inline-flex; align-items: center; gap: 10px;
+            padding: 14px 36px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 11px; font-weight: 800;
+            letter-spacing: 3px; text-transform: uppercase;
+            border: 1px solid rgba(212,175,55,0.4);
+            background: rgba(212,175,55,0.08);
+            color: var(--or-royal);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .btn-discord:hover {
+            background: var(--or-royal);
+            color: var(--noir-profond);
+            box-shadow: 0 0 30px var(--or-glow);
+        }
+        .btn-discord svg {
+            width: 20px; height: 20px;
+            fill: currentColor;
+        }
+
+        /* Connected user bar */
+        .user-bar {
+            display: flex; align-items: center; gap: 14px;
+            padding: 16px 20px;
+            background: rgba(13,13,13,0.8);
+            border: 1px solid rgba(212,175,55,0.15);
+            margin-bottom: 16px;
+        }
+        .user-bar img {
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            border: 2px solid var(--or-royal);
+        }
+        .user-bar .user-name {
+            font-size: 13px; font-weight: 700;
+            letter-spacing: 1px; color: var(--blanc);
+            flex: 1;
+        }
+        .user-bar .user-tag {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 11px; font-weight: 600;
+            color: var(--or-royal);
+            letter-spacing: 1px;
+        }
+        .btn-logout {
+            background: none; border: 1px solid rgba(212,175,55,0.2);
+            color: var(--gris-acier); font-family: 'Montserrat', sans-serif;
+            font-size: 9px; font-weight: 700; letter-spacing: 2px;
+            text-transform: uppercase; padding: 6px 14px;
+            cursor: pointer; transition: all 0.3s;
+        }
+        .btn-logout:hover {
+            border-color: rgba(212,175,55,0.5);
+            color: var(--or-royal);
+        }
+
+        /* Chat area */
+        .chat-wrapper {
+            position: relative;
+            background: rgba(13,13,13,0.8);
+            border: 1px solid rgba(212,175,55,0.1);
+        }
+        .chat-messages {
+            height: 320px;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        .chat-messages .placeholder-msg {
+            color: var(--gris-acier); font-size: 13px;
+            text-align: center; margin-top: 120px;
+            letter-spacing: 1px;
+        }
+        .chat-input-row {
+            display: flex; gap: 0;
+            border-top: 1px solid rgba(212,175,55,0.1);
+        }
+        .chat-input-row textarea {
+            flex: 1;
+            background: rgba(0,0,0,0.3);
+            border: none; color: var(--blanc);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 13px; padding: 14px 16px;
+            resize: none; outline: none;
+            height: 48px;
+        }
+        .chat-input-row textarea::placeholder {
+            color: var(--gris-acier); font-size: 12px;
+        }
+        .chat-input-row button {
+            background: var(--or-royal); color: var(--noir-profond);
+            border: none; padding: 0 24px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 10px; font-weight: 800;
+            letter-spacing: 2px; text-transform: uppercase;
+            cursor: pointer; transition: background 0.3s;
+        }
+        .chat-input-row button:hover { background: #e0c050; }
+
+        /* Coming soon overlay */
+        .coming-soon-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(13,13,13,0.88);
+            backdrop-filter: blur(4px);
+            display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
+            z-index: 10;
+        }
+        .coming-soon-overlay .cs-badge {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 11px; font-weight: 700;
+            letter-spacing: 4px; text-transform: uppercase;
+            color: var(--or-royal);
+            border: 1px solid rgba(212,175,55,0.3);
+            padding: 8px 24px;
+            margin-bottom: 16px;
+        }
+        .coming-soon-overlay .cs-text {
+            font-size: 13px; color: var(--gris-acier);
+            letter-spacing: 1px; text-align: center;
+            max-width: 320px; line-height: 1.6;
+        }
+
+        .hidden { display: none !important; }
+
         /* ─── RESPONSIVE ─── */
         @media (max-width: 768px) {
             nav { padding: 14px 20px; }
@@ -495,6 +650,7 @@
         <a href="#association">Association</a>
         <a href="#events">Events</a>
         <a href="#contact">Contact</a>
+        <a href="#membres">Membres</a>
     </div>
 </nav>
 
@@ -650,13 +806,259 @@
     </div>
 </div>
 
+<section id="membres">
+    <div class="section-label">Espace prive</div>
+    <h2>Espace Membres</h2>
+    <div class="gold-sep"></div>
+    <p class="section-desc">Connecte-toi avec ton compte Discord pour acceder a l'espace membres de la structure.</p>
+    <div class="membres-container">
+
+        <!-- Login state -->
+        <div id="membres-login" class="discord-login-box">
+            <p>Seuls les membres de STRUCTURE XR1 peuvent acceder a cet espace. Authentifie-toi via Discord pour continuer.</p>
+            <button class="btn-discord" onclick="discordLogin()">
+                <svg viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+                Se connecter avec Discord
+            </button>
+        </div>
+
+        <!-- Connected state -->
+        <div id="membres-connected" class="hidden">
+            <div class="user-bar">
+                <img id="user-avatar" src="" alt="Avatar">
+                <div>
+                    <div class="user-name" id="user-name"></div>
+                    <div class="user-tag">MEMBRE XR1</div>
+                </div>
+                <button class="btn-logout" onclick="discordLogout()">Deconnexion</button>
+            </div>
+            <div class="chat-wrapper">
+                <div class="chat-messages">
+                    <div class="placeholder-msg">Les messages apparaitront ici.</div>
+                </div>
+                <div class="chat-input-row">
+                    <textarea placeholder="Ecris un message..." rows="1"></textarea>
+                    <button>Envoyer</button>
+                </div>
+                <div class="coming-soon-overlay">
+                    <div class="cs-badge">Coming Soon</div>
+                    <div class="cs-text">Chat securise en cours de deploiement</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
 <footer>
     <div class="brand">STRUCTURE XR1</div>
     <div class="copy">&copy; 2025 STRUCTURE XR1 &mdash; Association esport francophone multi-jeux</div>
     <div class="legal">Association loi 1901 &mdash; RNA W061018338 &mdash; SIREN 999 612 666</div>
     <div class="motto">"La coherence cree le prestige."</div>
-    <!-- STATUS_START -->v2.0.0<!-- STATUS_END -->
+    <!-- STATUS_START -->v2.1.0<!-- STATUS_END -->
 </footer>
 
+<script>
+/* ═══════════════════════════════════════════
+   Discord OAuth2 PKCE Flow
+   App ID: 1480743587997155419
+   Redirect: https://structure-xr1.github.io/website/
+   Scope: identify
+═══════════════════════════════════════════ */
+const DISCORD_CLIENT_ID = '1480743587997155419';
+const DISCORD_REDIRECT_URI = 'https://structure-xr1.github.io/website/';
+const DISCORD_SCOPE = 'identify';
+const DISCORD_AUTH_URL = 'https://discord.com/api/oauth2/authorize';
+const DISCORD_TOKEN_URL = 'https://discord.com/api/oauth2/token';
+const DISCORD_API = 'https://discord.com/api/v10';
+
+// PKCE: generate code verifier (43-128 chars, unreserved URI chars)
+function generateCodeVerifier() {
+    const array = new Uint8Array(32);
+    crypto.getRandomValues(array);
+    return base64UrlEncode(array);
+}
+
+// PKCE: SHA-256 hash then base64url encode
+async function generateCodeChallenge(verifier) {
+    const encoder = new TextEncoder();
+    const data = encoder.encode(verifier);
+    const digest = await crypto.subtle.digest('SHA-256', data);
+    return base64UrlEncode(new Uint8Array(digest));
+}
+
+function base64UrlEncode(buffer) {
+    let str = '';
+    for (let i = 0; i < buffer.length; i++) {
+        str += String.fromCharCode(buffer[i]);
+    }
+    return btoa(str).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+}
+
+function generateState() {
+    const array = new Uint8Array(16);
+    crypto.getRandomValues(array);
+    return base64UrlEncode(array);
+}
+
+async function discordLogin() {
+    const codeVerifier = generateCodeVerifier();
+    const codeChallenge = await generateCodeChallenge(codeVerifier);
+    const state = generateState();
+
+    // Store PKCE verifier and state in sessionStorage
+    sessionStorage.setItem('discord_code_verifier', codeVerifier);
+    sessionStorage.setItem('discord_oauth_state', state);
+
+    const params = new URLSearchParams({
+        response_type: 'code',
+        client_id: DISCORD_CLIENT_ID,
+        redirect_uri: DISCORD_REDIRECT_URI,
+        scope: DISCORD_SCOPE,
+        state: state,
+        code_challenge: codeChallenge,
+        code_challenge_method: 'S256'
+    });
+
+    window.location.href = DISCORD_AUTH_URL + '?' + params.toString();
+}
+
+function discordLogout() {
+    sessionStorage.removeItem('discord_access_token');
+    sessionStorage.removeItem('discord_user');
+    sessionStorage.removeItem('discord_code_verifier');
+    sessionStorage.removeItem('discord_oauth_state');
+    showLoginState();
+}
+
+function showLoginState() {
+    document.getElementById('membres-login').classList.remove('hidden');
+    document.getElementById('membres-connected').classList.add('hidden');
+}
+
+function showConnectedState(user) {
+    document.getElementById('membres-login').classList.add('hidden');
+    document.getElementById('membres-connected').classList.remove('hidden');
+
+    const avatarUrl = user.avatar
+        ? 'https://cdn.discordapp.com/avatars/' + user.id + '/' + user.avatar + '.png?size=72'
+        : 'https://cdn.discordapp.com/embed/avatars/' + ((parseInt(user.id) >> 22) % 6) + '.png';
+
+    document.getElementById('user-avatar').src = avatarUrl;
+    document.getElementById('user-name').textContent = user.global_name || user.username;
+}
+
+// Exchange authorization code for access token (PKCE, no client_secret needed)
+async function exchangeCode(code) {
+    const codeVerifier = sessionStorage.getItem('discord_code_verifier');
+    if (!codeVerifier) {
+        console.error('XR1: Missing PKCE code verifier');
+        return null;
+    }
+
+    try {
+        const response = await fetch(DISCORD_TOKEN_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams({
+                grant_type: 'authorization_code',
+                code: code,
+                redirect_uri: DISCORD_REDIRECT_URI,
+                client_id: DISCORD_CLIENT_ID,
+                code_verifier: codeVerifier
+            })
+        });
+
+        if (!response.ok) {
+            console.error('XR1: Token exchange failed', response.status);
+            return null;
+        }
+
+        const data = await response.json();
+        return data.access_token;
+    } catch (err) {
+        console.error('XR1: Token exchange error', err);
+        return null;
+    }
+}
+
+// Fetch Discord user info
+async function fetchDiscordUser(accessToken) {
+    try {
+        const response = await fetch(DISCORD_API + '/users/@me', {
+            headers: { 'Authorization': 'Bearer ' + accessToken }
+        });
+        if (!response.ok) return null;
+        return await response.json();
+    } catch (err) {
+        console.error('XR1: User fetch error', err);
+        return null;
+    }
+}
+
+// Handle OAuth2 callback on page load
+async function handleOAuthCallback() {
+    const params = new URLSearchParams(window.location.search);
+    const code = params.get('code');
+    const state = params.get('state');
+
+    // Check if we already have a session
+    const storedToken = sessionStorage.getItem('discord_access_token');
+    const storedUser = sessionStorage.getItem('discord_user');
+    if (storedToken && storedUser) {
+        try {
+            const user = JSON.parse(storedUser);
+            showConnectedState(user);
+            return;
+        } catch (e) {
+            sessionStorage.removeItem('discord_access_token');
+            sessionStorage.removeItem('discord_user');
+        }
+    }
+
+    // No code in URL = show login
+    if (!code) {
+        showLoginState();
+        return;
+    }
+
+    // Verify state
+    const savedState = sessionStorage.getItem('discord_oauth_state');
+    if (state !== savedState) {
+        console.error('XR1: OAuth state mismatch');
+        showLoginState();
+        // Clean URL
+        window.history.replaceState({}, document.title, window.location.pathname);
+        return;
+    }
+
+    // Exchange code for token
+    const accessToken = await exchangeCode(code);
+    if (!accessToken) {
+        showLoginState();
+        window.history.replaceState({}, document.title, window.location.pathname);
+        return;
+    }
+
+    // Fetch user
+    const user = await fetchDiscordUser(accessToken);
+    if (!user) {
+        showLoginState();
+        window.history.replaceState({}, document.title, window.location.pathname);
+        return;
+    }
+
+    // Store in sessionStorage
+    sessionStorage.setItem('discord_access_token', accessToken);
+    sessionStorage.setItem('discord_user', JSON.stringify(user));
+
+    // Clean URL and show connected state
+    window.history.replaceState({}, document.title, window.location.pathname);
+    showConnectedState(user);
+}
+
+// Init on page load
+handleOAuthCallback();
+</script>
 </body>
 </html>
